@@ -41,8 +41,9 @@ This is an example of how to list things you need to use the software and how to
   npm install bootstrap@5.3.0-alpha2
   npm install vue-input-tag
 
-[Here](https://covid19-website-6d2a6.web.app/) is the live deployment of the website.
 
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228909875-ea3209d8-1183-4f5c-a9d9-1d4275ced0a8.png)
+
+[Here](https://covid19-website-6d2a6.web.app/) is the live deployment of the website.
 
