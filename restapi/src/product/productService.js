@@ -1,12 +1,10 @@
 var productModel = require('./productModel');
 
 // initialize data
-productModel.add({productId:1,productName: "sphinx", productOwnerName:"Nayong Sung",developers: ["Kuk","Jason","MJ"],scrumMasterName: "greek", startDate: "2023/04/25", methodology: "Agile"});
-productModel.add({productId:2,productName: "hydra", productOwnerName:"Kaite Jin",developers: ["TK","Kevin","Sarah"],scrumMasterName: "greek", startDate: "2023/05/23", methodology: "Wainlnie"});
-productModel.add({productId:3,productName: "huldra", productOwnerName:"Naomio Shin",developers: ["TK","Kevin","Sarah"],scrumMasterName: "greek", startDate: "2023/05/23", methodology: "Wainlnie"});
-productModel.add({productId:4,productName: "cyclops", productOwnerName:"hello sin",developers: ["TK","Kevin","Sarah"],scrumMasterName: "greek", startDate: "2023/05/23", methodology: "Agile"});
-productModel.add({productId:5,productName: "fenrir", productOwnerName:"kIMS'SMARKT",developers: ["TK","Kevin","Sarah"],scrumMasterName: "greek", startDate: "2023/05/23", methodology: "Wainlnie"});
-productModel.add({productId:6,productName: "medusa",  productOwnerName:"hODI SIN",developers: ["TK","Kevin","Sarah"],scrumMasterName: "greek", startDate: "2023/05/23", methodology: "Wainlnie"});
+productModel.add({productId:1,productName: "Mechanical punch", productOwnerName:"Smriti Shakdher",developers: ["Josh Rintoul","	Jeffrey Joju","Rhiannon Herbert","James Elson"],scrumMasterName: "Vasavi Kakkat", startDate: "2023/01/25", methodology: "Agile"});
+productModel.add({productId:2,productName: "Port-a-punch", productOwnerName:"Mike Zhou",developers: ["Yuhan Freeman","Sarah Son","Jeffrey Joju","Gurman Singh","James Elson"],scrumMasterName: "Olabisi Oluwakorede	", startDate: "2023/02/01", methodology: "Waterfall"});
+productModel.add({productId:3,productName: "Electric punch", productOwnerName:"Smriti Shakdher",developers: ["Ian Laing","Brian Kim","Josh Rintoul","Gurman Singh","Colin Newall"],scrumMasterName: "Sona Pareshshah", startDate: "2023/03/15", methodology: "Agile"});
+productModel.add({productId:4,productName: "Duplicating punch", productOwnerName:"Alix Cote",developers: ["Yuhan Freeman","Rhiannon Herbert","Sarah Son","Josh Rintoul","James Elson"],scrumMasterName: "Caitlin Leckie", startDate: "2023/03/23", methodology: "Agile"});
 
 /* Get all product data */
 module.exports.getAllProductFromService = () => {

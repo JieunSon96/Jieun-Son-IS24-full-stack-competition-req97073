@@ -36,7 +36,7 @@ Product.lastId = 0;
 
 Product.data = []
 
-/* Update a product data Controller*/
+/* Find a product data Controller*/
 Product.find = function(condition, callback) {
     let result = Product.data.reduce(function(a, x) {
         let flag = true;
