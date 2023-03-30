@@ -11,12 +11,22 @@ This is a Fully Functional IMB Product CRUD Web application. It is built using N
 * Version Control : Git
 
  
+ 
 # Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
+
 ### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
 
 This is an example of how to list things you need to use the software and how to install them.
 
@@ -44,4 +54,10 @@ This is an example of how to list things you need to use the software and how to
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228932831-f913f7a9-ec27-45ad-b63d-4d1e5cc02bc7.png)
 
+## Contact
 
+Sarah Jieun Son - sarahson2210@gmail.com
+
+Project Link: [https://github.com/JieunSon96/Jieun-Son-IS24-full-stack-competition-req97073](https://github.com/JieunSon96/Jieun-Son-IS24-full-stack-competition-req97073)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
