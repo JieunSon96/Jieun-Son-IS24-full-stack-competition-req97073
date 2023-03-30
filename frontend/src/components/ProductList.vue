@@ -19,7 +19,7 @@
    <div class="col-lg-4">
 <br><br>   
   <form class="form-inline">
-    <input class="form-control " style="width:80% !important;" type="search" v-model="searchKeyword" @keyup.enter="search" placeholder="Search" aria-label="Search">
+    <input class="form-control " style="width:80% !important;" type="search" @keyup.enter="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" style="float:right; margin-right:30px; margin-top:-38px;" type="submit" @click="searchKeywordMethod">Search</button>
   </form>
 
@@ -54,9 +54,13 @@
                 </tr>
     
             </thead>
-    
-            <tbody>
-    
+
+            <tbody v-if="result.length == 0">
+                <tr>
+                    <td colspan="8" style="text-align:center;">Record Not Found</td>
+                </tr>
+            </tbody>
+            <tbody v-else>
                 <tr v-for="product in result" v-bind:key="product.productId">
     
                     <td>{{ product.productId }}</td>
@@ -113,7 +117,7 @@
   <div class="card card-body">
      <h2 v-if="!product.startDate">Product Registation</h2>
      <h2 v-if="product.startDate">Product Edit</h2>
-        <form @submit.prevent="save">
+        <form ref="resetForm" @submit.prevent="save">
     
             <div class="form-group">
     
@@ -188,6 +192,8 @@ export default {
     name: 'ProductList',
     data() {
         return {
+            tags: [],
+            resultCount:0,
             search:"",
             result: {},
             product: {
@@ -207,7 +213,7 @@ export default {
         this.ProductLoad();
     },
     mounted() {
-        console.log("Vue.js");
+        
     },
     methods: {
         /* Get all Product Method */
@@ -230,7 +236,7 @@ export default {
 
         },/* Save Product Method */
         saveData() {
-
+        
         /* Form Save Validation */
         this.product.developers=this.tags;   
 
@@ -257,13 +263,17 @@ export default {
                     ({ data }) => {
                         this.ProductLoad();
                         this.showModal=false;
-                        this.resetForm();
                     }
                 )
+
+                
             alert("Save!!")
+            this.$router.go(0)
         }else{
              alert("Please fill in the blank!")
         }
+
+        
 
         },edit(product) {
         
