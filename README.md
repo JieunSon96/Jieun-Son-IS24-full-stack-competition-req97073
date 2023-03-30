@@ -39,6 +39,7 @@ This is an example of how to list things you need to use the software and how to
   npm install locallydb 
   npm install swagger-jsdoc@6.0.0 —save
   npm install swagger-ui-express —save
+  npm install --save-dev swagger-autogen
 
 * Frontend
 
