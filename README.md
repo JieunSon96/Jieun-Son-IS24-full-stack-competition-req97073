@@ -59,6 +59,8 @@ This is an example of how to list things you need to use the software and how to
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228932831-f913f7a9-ec27-45ad-b63d-4d1e5cc02bc7.png)
 
+[Project Screenvideo](https://www.loom.com/share/2348b6332e114bdf8d45d8d724e51f36)
+
 ## Contact
 
 Sarah Jieun Son - sarahson2210@gmail.com
