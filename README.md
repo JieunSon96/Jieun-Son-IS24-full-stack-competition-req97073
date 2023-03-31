@@ -9,13 +9,15 @@ This is a Fully Functional IMB Product CRUD Web application. It is built using N
 * CSS Framework :  Bootstrap
 * IDE : Visual Studio Code 1.6.0
 * Version Control : Git
+* API Doc : Swagge-autogen 2.23.1 [URL: http://localhost:3000/api/api-docs]
 
  
  
 # Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these
+simple example steps.
 
 
 ### Prerequisites
@@ -37,7 +39,6 @@ This is an example of how to list things you need to use the software and how to
   npm install express
   npm install cors
   npm install locallydb 
-  npm install swagger-jsdoc@6.0.0 —save
   npm install swagger-ui-express —save
   npm install --save-dev swagger-autogen
 
