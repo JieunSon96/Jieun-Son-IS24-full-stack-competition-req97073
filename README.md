@@ -34,17 +34,42 @@ This is an example of how to list things you need to use the software and how to
 
 * Backend
 
+1. Clone the front and backend repo
+
+   ```sh
+   git clone https://github.com/JieunSon96/Jieun-Son-IS24-full-stack-competition-req97073.git
+   ```
+   
+2. Install NPM package
+
+   ```sh
+   npm install
+   ```
+   
+3. Install Dependencies
+
   ```sh
-  npm init
-  npm install express
-  npm install cors
-  npm install locallydb 
-  npm install swagger-ui-express —save
-  npm install --save-dev swagger-autogen
+ npm init
+ npm install express
+ npm install cors
+ npm install locallydb 
+ npm install swagger-ui-express
+ npm install --save-dev swagger-autogen
+  ```
+4. Server Start Script
 
-  node server.js
-
+   ```sh
+   node server.js
+   ```
 * Frontend
+
+1. Change the frontend route
+
+   ```sh
+   cd frontend
+   ```
+
+2. Install Dependencies
 
   ```sh
   npm init
@@ -53,9 +78,13 @@ This is an example of how to list things you need to use the software and how to
   npm install axios
   npm install bootstrap@5.3.0-alpha2
   npm install vue-input-tag
-  
-  npm run dev
+  ```
+ 3. Frontend Start Script
 
+   ```sh
+   npm run dev
+   ```
+  
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228932831-f913f7a9-ec27-45ad-b63d-4d1e5cc02bc7.png)
 
