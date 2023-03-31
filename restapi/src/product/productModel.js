@@ -1,3 +1,25 @@
+/**
+ * @openapi
+ * components:
+ *   schema:
+ *     Product:
+ *       type: object
+ *       required:
+ *        - title
+ *        - description
+ *        - price
+ *        - image
+ *       properties:
+ *         title:
+ *           type: string
+ *         description:
+ *           type: string
+ *         price:
+ *           type: number
+ *         image:
+ *           type: string
+ */
+
 class Product {
     fields = {
         productId: {

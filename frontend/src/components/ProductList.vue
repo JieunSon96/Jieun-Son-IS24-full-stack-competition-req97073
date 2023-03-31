@@ -1,34 +1,112 @@
+/* eslint-disable */
+
+
+<script>
+//import Vue from 'vue';
+import axios from 'axios';
+
+//Vue.use(axios)
+
+
+export default {
+    name: 'ProductList',
+    data() {
+        return {
+            result: {},
+            product: {
+                productId: '',
+                productName: '',
+                productOwnerName: '',
+                developers: [''],
+                scrumMasterName: '',
+                startDate: '',
+                methodology: '',
+
+            }
+        }
+    },
+  
+    created() {
+        this.ProductLoad();
+    },
+    mounted() {
+        console.log("mounted() called.......");
+
+    },
+
+    methods: {
+        ProductLoad() {
+            var page = "http://localhost:3000/api/product/getAll/";
+            axios.get(page)
+                .then(
+                    ({ data }) => {
+                        this.result = data.data;
+                        this.resultCount = data.data.length;
+                    }
+                );
+        }, save() {
+            if (this.product.productId == '') {
+                this.saveData();
+            } else {
+                this.updateData();
+            }
+
+        }, saveData() {
+        console.log("저장하자!!!!"+this.product.productName);
+            axios.post("http://localhost:3000/api/product/create/", this.product)
+                .then(
+                    ({ data }) => {
+                        alert("saveddddd"+data);
+                        this.ProductLoad();
+                    }
+                )
+
+        },edit(product) {
+            this.product = product;
+
+        },updateData() {
+            var editproducts = 'http://localhost:3000/api/product/update/' + this.product.productId;
+            axios.put(editproducts, this.product)
+                .then(
+                    ({ data }) => {
+                        this.product.productName = '';
+                        this.product.productOwnerName = '',
+                            this.product.developers = ''
+                        this.product.scrumMasterName = '';
+                        this.product.startDate = '',
+                            this.product.methodology = ''
+                        this.productId = ''
+                        alert("Updated!!!");
+                        this.ProductLoad();
+                    }
+                );
+
+        },remove(product) {
+            var url = `http://localhost:3000/api/product/delete/${product.productId}`;
+            axios.delete(url);
+            alert("Deleted");
+            this.ProductLoad();
+        }
+    }
+}
+</script>
+
 <template>
-    <div id="container">
-<!-- Header -->
-<nav class="navbar fixed-top navbar-dark bg-dark">
-  <span class="navbar-brand mb-2 h1" style="margin-left:20px; margin-top:3px;"> IMB Product</span>
+
+
+    <div>
+   <!-- As a heading -->
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">IMB Product</span>
 </nav>
+       
 
- <!-- Add Action -->
-<br><br>
-
-<div class="row">
-<div class="col-8"><br><br>    
-<h2>List of Products 
-    <button id="show-modal" class="btn btn-outline-primary" v-on:click="showModal = true"> Add New Product</button>
-</h2>
-<br><br>
-</div>
- <!-- Search Form -->
-   <div class="col-lg-4">
-<br><br>   
+        <h2>List of Products <button type="button" class="btn btn-info" @click="edit(product)" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Add New Product</button><nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <input class="form-control " style="width:80% !important;" type="search" @keyup.enter="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" style="float:right; margin-right:30px; margin-top:-38px;" type="submit" @click="searchKeywordMethod">Search</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
-
-   </div>
-
-</div>
-
- <!-- Product Table  -->
- <div class="col-12"> 
+</nav></h2>
         <table class="table table-dark">
     
             <thead>
@@ -54,14 +132,12 @@
                 </tr>
     
             </thead>
-
-            <tbody v-if="result.length == 0">
-                <tr>
-                    <td colspan="8" style="text-align:center;">Record Not Found</td>
-                </tr>
-            </tbody>
-            <tbody v-else>
+    
+            <tbody>
+    
                 <tr v-for="product in result" v-bind:key="product.productId">
+    
+    
     
                     <td>{{ product.productId }}</td>
     
@@ -79,7 +155,8 @@
     
                     <td>
     
-                        <button type="button" class="btn btn-warning" @click="edit(product)">Edit</button> 
+                        <button type="button" class="btn btn-warning" @click="edit(product)">Edit</button>
+    
                         <button type="button" class="btn btn-danger" @click="remove(product)">Delete</button>
     
                     </td>
@@ -92,298 +169,87 @@
 
         </table>
     
- </div>
+    
     <h5>Displaying {{resultCount}} products</h5>
 
 
-<!-- Modal Setup-->
- <script type="text/x-template" id="modal-template">
-  <transition name="modal">
-    <div class="modal-mask" >
-      <div class="modal-wrapper">
-        <div class="modal-container">
-        <slot name="header"></slot>   <button id="modal-x-button" class="btn btn-warning" v-on:click="$emit('close')" style="float:right !important;">X</button>
-        </div>
-      </div>
-    </div>
-  </transition>
-</script>
-
-
-<!-- Modal Form  -->
-<div id="app">
-<modal v-if="showModal" v-on:close="showModal = false" :modalProductData="product">
-<span slot="header"> 
+ <h2>Product Registation</h2>
+     
   <div class="card card-body">
-     <h2 v-if="!product.startDate">Product Registation</h2>
-     <h2 v-if="product.startDate">Product Edit</h2>
-        <form ref="resetForm" @submit.prevent="save">
+        <form @submit.prevent="save">
     
             <div class="form-group">
     
                 <label>ProductName</label>
-                <input type="text" v-model="product.productName" class="form-control" placeholder="Product name">    
-            
+    
+                <input type="text" v-model="product.productName" class="form-control" placeholder="Product name">
+    
+    
+    
             </div>
     
             <div class="form-group">
     
                 <label>ProductOwnerName</label>
+    
                 <input type="text" v-model="product.productOwnerName" class="form-control" placeholder="productOwnerName">
-
+    
+    
+    
             </div>
-
+    
+    
+    
             <div class="form-group">
+    
                 <label>Developers</label>
-                <input-tag type="text" v-model="tags"  class="form-control" :limit="5" validate="text" placeholder="Please input up to five developers"></input-tag>
+    
+                <input type="text" v-model="product.developers" class="form-control" placeholder="developers">
+    
+    
+    
             </div>
 
             <div class="form-group">
+    
                 <label>ScrumMasterName</label>
+    
                 <input type="text" v-model="product.scrumMasterName" class="form-control" placeholder="scrumMasterName">
+    
+    
+    
             </div>
+    
+    
     
             <div class="form-group">
-                <label v-if="!product.productId">StartDate</label>
-                <input type="text" v-if="!product.productId" v-model="product.startDate" class="form-control" placeholder="ex) 2023/05/23"> 
+    
+                <label>StartDate</label>
+    
+                <input type="text" v-model="product.startDate" class="form-control" placeholder="startDate">
+    
+    
     
             </div>
-
-            <div class="form-group">  
+    
+    
+    
+            <div class="form-group">
+    
                 <label>Methodology</label>
-                <select  v-model="product.methodology" id="inputState" class="form-control">
-                <option selected>Agile</option>
-                <option>Waterfall</option>
-                </select> 
-
+    
+                <input type="text" v-model="product.methodology" class="form-control" placeholder="methodology">
+    
+    
+    
             </div>
-
-            <button  type="submit" id="saveBt" class="btn btn-primary">Save</button>
+    
+    
+    
+            <button type="submit" class="btn btn-primary">Save</button>
+    
         </form>
   </div>
-    </span>
-  </modal>
-</div>
-
-
     </div>
 </template>
-
-<script>
-import Vue from 'vue';
-import axios from 'axios';
-import InputTag from 'vue-input-tag'
-
-
-Vue.component('input-tag', InputTag)
-Vue.component('modal', {
-  template: '#modal-template'
-})
-
-new Vue({
-  el: '#app',
-  data: {
-    showModal: false
-  }
-})
-
-
-export default {
-    name: 'ProductList',
-    data() {
-        return {
-            tags: [],
-            resultCount:0,
-            search:"",
-            result: {},
-            product: {
-            productId: '',
-            productName: '',
-            productOwnerName: '',
-            developers: [''],
-            scrumMasterName: '',
-            startDate: '',
-            methodology: '',
-
-            },
-            showModal:false
-        }
-    },
-    created() {
-        this.ProductLoad();
-    },
-    mounted() {
-        
-    },
-    methods: {
-        /* Get all Product Method */
-        ProductLoad() {
-            var page = "http://localhost:3000/api/product/getAll/";
-            axios.get(page)
-                .then(
-                    ({ data }) => {
-                        this.result = data.data;
-                        this.resultCount = data.data.length;
-                    }
-                );
-        }, 
-        save() {
-            if (this.product.productId == '') {
-                this.saveData();
-            } else {
-                this.updateData();
-            }
-
-        },/* Save Product Method */
-        saveData() {
-        
-        /* Form Save Validation */
-        this.product.developers=this.tags;   
-
-        const productNameIsValid = !!this.product.productName
-        const productOwnerNameIsValid = !!this.product.productOwnerName
-        
-        var developersIsValid=false;
-
-        if(!this.product.developers){
-                 developersIsValid=false;
-        }else{
-                developersIsValid=true;
-        }
-
-        const scrumMasterNameIsValid = !!this.product.scrumMasterName
-        const startDateIsValid = !!this.product.startDate
-        const methodologyIsValid = !!this.product.methodology
-
-        const formIsValid = productNameIsValid && productOwnerNameIsValid  &&developersIsValid && scrumMasterNameIsValid && startDateIsValid && methodologyIsValid
-         
-        if(formIsValid){
-            axios.post("http://localhost:3000/api/product/create/", this.product)
-                .then(
-                    ({ data }) => {
-                        this.ProductLoad();
-                        this.showModal=false;
-                    }
-                )
-
-                
-            alert("Save!!")
-            this.$router.go(0)
-        }else{
-             alert("Please fill in the blank!")
-        }
-
-        
-
-        },edit(product) {
-        
-             this.showModal = !this.showModal;
-             this.tags=product.developers;
-             this.product = product;
-
-        },
-        /* Update Product Method */
-        updateData() {
-            var editproducts = 'http://localhost:3000/api/product/update/' + this.product.productId;
-            this.product.developers=this.tags;
-            axios.put(editproducts, this.product)
-                .then(
-                    ({ data }) => {
-                        this.product.productName = '';
-                        this.product.productOwnerName = '',
-                        this.product.developers = ''
-                        this.product.scrumMasterName = '';
-                        this.product.startDate = '',
-                        this.product.methodology = ''
-                        this.productId = ''
-                        alert("Updated!!!");
-                        this.showModal=false;
-                        this.ProductLoad();
-                    }
-                );
-
-        },
-         /* Remove Method */
-        remove(product) {
-            alert(product.productId)
-            var url = `http://localhost:3000/api/product/delete/${product.productId}`;
-            axios.delete(url);
-            alert("Deleted");
-            this.ProductLoad();
-        },
-        /* Search ScrumMasterName and Developers Method */
-        searchKeywordMethod(){
-            var page = "http://localhost:3000/api/product/search/"+ this.searchKeyword;
-            axios.get(page)
-                .then(
-                    ({ data }) => {
-                        this.result = data.data;
-                        this.resultCount = data.data.length;
-                    }
-                );
-        }
-    }
-}
-</script>
-
-
-<style scoped>
-#container{
-    margin:0px;
-    margin-left:10px;
-    padding:10px;
-    margin-right:10px;
-}
-
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .4s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-  width:600px;
-}
-
-.modal-container {
-    position:relative;
-    top:20%;
-    left:20%;
-  width: 50%;
-  margin: 0px auto;
-  padding: 20px 30px;
-  min-height: 35px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .2s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-#saveBt{
-    float:right;
-    margin-top:10px;
-}
-</style>
+  

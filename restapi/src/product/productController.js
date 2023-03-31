@@ -25,6 +25,7 @@ var createProductController = async(req,res) => {
     }
 }
 
+
 /* Update a product data Controller*/
 var updateProductController = async (req, res) =>
 {
