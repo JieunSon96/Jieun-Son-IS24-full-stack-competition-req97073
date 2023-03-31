@@ -56,7 +56,6 @@ var deleteProductController = async (req, res) =>
 /* Search product data Controller*/
 var getPrdByKeywordController = async(req,res) => {
     var product = await productService.getPrdByKeywordService(req.params.keyword);
-
     if(product){
         res.send({"status":true,"data":product})
         res.status(200)

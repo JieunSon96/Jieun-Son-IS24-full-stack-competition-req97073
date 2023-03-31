@@ -3,19 +3,17 @@ var server = express();
 var routes = require('./routes/routes');
 const cors = require('cors');
 
-/* Cors error Solution*/
-server.use(
-    cors({
-    origin:"http://localhost:3000",
-    credentials: true
-}));
 
-server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-  });
+
+/**
+Enabling CORS
+*/
+server.all('/*', function(req, res, next) {
+          res.header('Access-Control-Allow-Origin', req.headers.origin || "*");
+          res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
+          res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
+          next();
+});
 
 server.use(express.json());
 server.use(routes);

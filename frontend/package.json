@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "",
+  "author": "Sarah Son <plmn855000@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -10,19 +10,22 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^1.3.4",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.0-alpha2",
+    "firebase": "^9.19.0",
+    "firebase-tools": "^11.25.2",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-cli": "^2.9.6",
+    "vue-input-tag": "^2.0.7",
+    "vue-router": "^3.0.1",
+    "vue2-collapse": "^1.0.15"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
-    "babel-eslint": "^8.2.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-istanbul": "^4.1.1",
@@ -39,15 +42,6 @@
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
-    "eslint": "^4.15.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.2.0",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
@@ -96,5 +90,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "ISC"
 }
