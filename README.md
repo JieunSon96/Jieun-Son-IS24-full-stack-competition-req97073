@@ -42,6 +42,8 @@ This is an example of how to list things you need to use the software and how to
   npm install swagger-ui-express —save
   npm install --save-dev swagger-autogen
 
+  node server.js
+
 * Frontend
 
   ```sh
@@ -51,7 +53,8 @@ This is an example of how to list things you need to use the software and how to
   npm install axios
   npm install bootstrap@5.3.0-alpha2
   npm install vue-input-tag
-
+  
+  npm run dev
 
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228932831-f913f7a9-ec27-45ad-b63d-4d1e5cc02bc7.png)
