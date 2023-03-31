@@ -23,10 +23,12 @@ simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
+
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
+
+ ```sh
+ npm install npm@latest -g
+ ```
 
 ### Installation
 
@@ -36,15 +38,15 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the front and backend repo
 
-   ```sh
-   git clone https://github.com/JieunSon96/Jieun-Son-IS24-full-stack-competition-req97073.git
-   ```
+  ```sh
+  git clone https://github.com/JieunSon96/Jieun-Son-IS24-full-stack-competition-req97073.git
+  ```
    
 2. Install NPM package
 
-   ```sh
-   npm install
-   ```
+  ```sh
+  npm install
+  ```
    
 3. Install Dependencies
 
@@ -56,18 +58,18 @@ This is an example of how to list things you need to use the software and how to
  npm install swagger-ui-express
  npm install --save-dev swagger-autogen
   ```
-4. Server Start Script
+4. Run the Server
 
-   ```sh
-   node server.js
-   ```
+  ```sh
+  node server.js
+  ```
 * Frontend
 
 1. Change the frontend route
 
-   ```sh
-   cd frontend
-   ```
+  ```sh
+  cd frontend
+  ```
 
 2. Install Dependencies
 
@@ -79,11 +81,17 @@ This is an example of how to list things you need to use the software and how to
   npm install bootstrap@5.3.0-alpha2
   npm install vue-input-tag
   ```
- 3. Frontend Start Script
+ 3. Run the Frontend
 
    ```sh
    npm run dev
    ```
+   
+4. Browser
+
+  ```sh
+   http://localhost:8080
+  ```
   
 # Preview
 ![image](https://user-images.githubusercontent.com/40187625/228932831-f913f7a9-ec27-45ad-b63d-4d1e5cc02bc7.png)
