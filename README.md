@@ -75,7 +75,7 @@ This is an example of how to list things you need to use the software and how to
 
   ```sh
   npm init
-  npm install vue-cli
+  npm install vue-cli@2.9.6
   vue init webpack frontend
   npm install axios
   npm install bootstrap@5.3.0-alpha2
